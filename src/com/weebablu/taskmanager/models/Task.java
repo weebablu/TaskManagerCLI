@@ -17,14 +17,13 @@ public class Task {
     private LocalDateTime updatedAt; // For undo
 
     // Constructors
-    public Task(int id, String title, String description, LocalDateTime dueDate, PriorityLevel priority,
-            Status status) {
+    public Task(int id, String title, String description, LocalDateTime dueDate, PriorityLevel priority) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.status = status;
+        this.status = Status.PENDING;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
