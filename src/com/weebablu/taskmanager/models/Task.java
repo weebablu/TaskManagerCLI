@@ -99,7 +99,7 @@ public class Task {
     @Override
     public String toString() {
         String statusIcon = (status == Status.DONE ? "[✓]" : "[ ]");
-        return String.format("%s %s (Priority: %s)\nDue: %s | Status: %s\n", statusIcon, title, priority.name(),
+        return String.format(" " + "%s %s (Priority: %s)\nDue: %s | Status: %s\n", statusIcon, title, priority.name(),
                 dueDate.toString().replace('T', ' '), status.name());
     }
 
