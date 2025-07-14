@@ -28,11 +28,11 @@ public class TaskService {
             return;
         }
         System.out.println("\n Task Board: ");
-        System.out.println("=".repeat(50));
+        System.out.println(" " + "=".repeat(50));
 
         for (Task task : taskList) {
             System.out.println(task);
-            System.out.println("-".repeat(50));
+            System.out.println(" " + "-".repeat(50));
         }
     }
 }
