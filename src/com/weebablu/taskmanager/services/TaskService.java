@@ -38,12 +38,21 @@ public class TaskService {
     }
 
     public void updateTaskStatus(int taskIndex, Status newStatus) {
-        if (taskIndex > 0 && taskIndex < taskList.size()) {
+        if (taskIndex >= 0 && taskIndex < taskList.size()) {
             Task task = taskList.get(taskIndex);
             task.setStatus(newStatus);
             System.out.println(" Task status updated successfully! :)");
         } else {
             System.out.println(" ✕ Invalid task index.");
+        }
+    }
+
+    public void deleteTask(int taskIndex) {
+        if (taskIndex >= 0 && taskIndex < taskList.size()) {
+            Task removed = taskList.remove(taskIndex);
+            System.out.println(" ▥ Deleted Task: " + removed.getTitle());
+        } else {
+            System.out.println(" ✕ Invalid task index. Deletion failed.");
         }
     }
 }
