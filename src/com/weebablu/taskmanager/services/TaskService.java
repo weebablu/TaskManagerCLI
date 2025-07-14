@@ -2,6 +2,7 @@ package com.weebablu.taskmanager.services;
 
 import com.weebablu.taskmanager.enums.PriorityLevel;
 import com.weebablu.taskmanager.models.Task;
+import com.weebablu.taskmanager.enums.Status;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -33,6 +34,16 @@ public class TaskService {
         for (Task task : taskList) {
             System.out.println(task);
             System.out.println(" " + "-".repeat(50));
+        }
+    }
+
+    public void updateTaskStatus(int taskIndex, Status newStatus) {
+        if (taskIndex > 0 && taskIndex < taskList.size()) {
+            Task task = taskList.get(taskIndex);
+            task.setStatus(newStatus);
+            System.out.println(" Task status updated successfully! :)");
+        } else {
+            System.out.println(" ✕ Invalid task index.");
         }
     }
 }
