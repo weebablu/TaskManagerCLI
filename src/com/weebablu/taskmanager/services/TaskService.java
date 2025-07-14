@@ -50,7 +50,7 @@ public class TaskService {
     public void deleteTask(int taskIndex) {
         if (taskIndex >= 0 && taskIndex < taskList.size()) {
             Task removed = taskList.remove(taskIndex);
-            System.out.println(" ▥ Deleted Task: " + removed.getTitle());
+            System.out.println(" ▮ Deleted Task: " + removed.getTitle());
         } else {
             System.out.println(" ✕ Invalid task index. Deletion failed.");
         }
