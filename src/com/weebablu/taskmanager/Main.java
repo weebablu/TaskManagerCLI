@@ -28,6 +28,9 @@ public class Main {
                 case "3":
                     handleUpdateStatus();
                     break;
+                case "4":
+                    handleDeleteTask();
+                    break;
                 case "0":
                     System.out.println(" :) Exiting Task Manager. \n    Stay Productive!");
                     return;
@@ -43,8 +46,9 @@ public class Main {
     private static void showMenu() {
         System.out.println("\n === Task Manager CLI ===");
         System.out.println(" 1. + Add Task");
-        System.out.println(" 2. ▮ View All Tasks");
+        System.out.println(" 2. ▤ View All Tasks");
         System.out.println(" 3. Mark Task as DONE(✓)");
+        System.out.println(" 4. ▮ Delete Task");
         System.out.println(" 0. ✕ Exit");
         System.out.println(" Enter your choice: ");
     }
@@ -77,6 +81,17 @@ public class Main {
             taskService.updateTaskStatus(index - 1, Status.DONE);
         } catch (Exception e) {
             System.out.println(" ✕ Failed to update task status. Invalid Input.");
+        }
+    }
+
+    private static void handleDeleteTask() {
+        try {
+            taskService.viewAllTasks(); // Displaying all the tasks
+            System.out.println(" Enter the task number to delete: ");
+            int index = Integer.parseInt(sc.nextLine());
+            taskService.deleteTask(index - 1);
+        } catch (Exception e) {
+            System.out.println(" ✕ Failed to delete task. Invalid input.");
         }
     }
 }
