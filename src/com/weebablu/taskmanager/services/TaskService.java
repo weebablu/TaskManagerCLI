@@ -1,7 +1,6 @@
 package com.weebablu.taskmanager.services;
 
 import com.weebablu.taskmanager.enums.PriorityLevel;
-import com.weebablu.taskmanager.enums.Status;
 import com.weebablu.taskmanager.models.Task;
 
 import java.time.LocalDateTime;
@@ -11,8 +10,29 @@ import java.util.List;
 public class TaskService {
     private List<Task> taskList;
     private int nextId;
-    public TaskService(){
+
+    public TaskService() {
         this.taskList = new ArrayList<>();
         this.nextId = 1;
+    }
+
+    public Task addTask(String title, String description, PriorityLevel priority, LocalDateTime dueDate) {
+        Task task = new Task(nextId++, title, description, dueDate, priority);
+        taskList.add(task);
+        return task;
+    }
+
+    public void viewAllTasks() {
+        if (taskList.isEmpty()) {
+            System.out.println(" \nNo tasks available. Add one to get started! :)\n");
+            return;
+        }
+        System.out.println("\n Task Board: ");
+        System.out.println("=".repeat(50));
+
+        for (Task task : taskList) {
+            System.out.println(task);
+            System.out.println("-".repeat(50));
+        }
     }
 }
