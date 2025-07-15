@@ -64,4 +64,8 @@ public class TaskService {
     public boolean isTaskListEmpty() {
         return taskList.isEmpty();
     }
+
+    public Task getTask(int index) {
+        return taskList.get(index);
+    }
 }

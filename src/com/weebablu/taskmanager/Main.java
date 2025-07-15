@@ -3,7 +3,7 @@ package com.weebablu.taskmanager;
 import com.weebablu.taskmanager.enums.*;
 // import com.weebablu.taskmanager.utils.*;
 // import com.weebablu.taskmanager.exceptions.*;
-// import com.weebablu.taskmanager.models.Task;
+import com.weebablu.taskmanager.models.Task;
 import com.weebablu.taskmanager.services.TaskService;
 
 import java.time.LocalDateTime;
@@ -102,6 +102,17 @@ public class Main {
             taskService.viewAllTasks(); // Displaying all the tasks
             System.out.println(" Enter the task number to delete: ");
             int index = Integer.parseInt(sc.nextLine());
+            // Confirm Delete if the task is not DONE.
+            Task task = taskService.getTask(index - 1);
+            if (task.getStatus() != Status.DONE) {
+                System.out.printf(" \n[!] This task is still marked as %s. Are you sure about deleting it? (yes/no):  ",
+                        task.getStatus().name());
+                String confirm = sc.nextLine().trim().toLowerCase();
+                if (!confirm.equals("yes")) {
+                    System.out.println(" Deletion cancelled.");
+                    return;
+                }
+            }
             taskService.deleteTask(index - 1);
         } catch (Exception e) {
             System.out.println(" [!] Failed to delete task. Invalid input.");
