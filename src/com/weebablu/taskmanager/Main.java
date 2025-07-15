@@ -45,11 +45,11 @@ public class Main {
 
     private static void showMenu() {
         System.out.println("\n === Task Manager CLI ===");
-        System.out.println(" 1. + Add Task");
-        System.out.println(" 2. ▤ View All Tasks");
-        System.out.println(" 3. Mark Task as DONE(✓)");
-        System.out.println(" 4. ▮ Delete Task");
-        System.out.println(" 0. ✕ Exit");
+        System.out.println(" 1. [+] Add Task");
+        System.out.println(" 2. [#] View All Tasks");
+        System.out.println(" 3. [o] Mark Task as DONE");
+        System.out.println(" 4. [-] Delete Task");
+        System.out.println(" 0. [X] Exit");
         System.out.println(" Enter your choice: ");
     }
 
@@ -61,15 +61,17 @@ public class Main {
             String description = sc.nextLine();
             System.out.println(" Enter Priority (LOW, MEDIUM, HIGH): ");
             PriorityLevel priority = PriorityLevel.valueOf(sc.nextLine().toUpperCase());
-            System.out.println(" Enter due date (yyyy-mm-dd HH:mm): ");
+            System.out.println(" Enter due date (yyyy-MM-dd HH:mm): ");
             String dateInput = sc.nextLine();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             LocalDateTime dueDate = LocalDateTime.parse(dateInput, formatter);
 
             taskService.addTask(title, description, priority, dueDate);
-            System.out.println(" ✓ Task addded successfully!");
+            System.out.println(" [:)] Task addded successfully!");
         } catch (Exception e) {
-            System.out.println(" ✕ Failed to add tasks. Please check your inputs.");
+            System.out.println(" [!] Failed to add tasks. Please check your inputs.");
+            //e.printStackTrace();
+
         }
     }
 
@@ -80,7 +82,8 @@ public class Main {
             int index = Integer.parseInt(sc.nextLine());
             taskService.updateTaskStatus(index - 1, Status.DONE);
         } catch (Exception e) {
-            System.out.println(" ✕ Failed to update task status. Invalid Input.");
+            System.out.println(" [!] Failed to update task status. Invalid Input.");
+           // e.printStackTrace();
         }
     }
 
@@ -91,7 +94,9 @@ public class Main {
             int index = Integer.parseInt(sc.nextLine());
             taskService.deleteTask(index - 1);
         } catch (Exception e) {
-            System.out.println(" ✕ Failed to delete task. Invalid input.");
+            System.out.println(" [!] Failed to delete task. Invalid input.");
+           // e.printStackTrace();
+
         }
     }
 }

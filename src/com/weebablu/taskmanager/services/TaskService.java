@@ -25,11 +25,12 @@ public class TaskService {
 
     public void viewAllTasks() {
         if (taskList.isEmpty()) {
-            System.out.println(" \nNo tasks available. Add one to get started! :)\n");
+            System.out.println(" \nNo tasks available. Add one to get started!" + " :)\n");
             return;
         }
         System.out.println("\n Task Board: ");
         System.out.println(" " + "=".repeat(50));
+        System.out.println();
 
         for (Task task : taskList) {
             System.out.println(task);
@@ -43,16 +44,16 @@ public class TaskService {
             task.setStatus(newStatus);
             System.out.println(" Task status updated successfully! :)");
         } else {
-            System.out.println(" ✕ Invalid task index.");
+            System.out.println(" [!] Invalid task index.");
         }
     }
 
     public void deleteTask(int taskIndex) {
         if (taskIndex >= 0 && taskIndex < taskList.size()) {
             Task removed = taskList.remove(taskIndex);
-            System.out.println(" ▮ Deleted Task: " + removed.getTitle());
+            System.out.println(" [-] Deleted Task: " + removed.getTitle());
         } else {
-            System.out.println(" ✕ Invalid task index. Deletion failed.");
+            System.out.println(" [!] Invalid task index. Deletion failed.");
         }
     }
 }
