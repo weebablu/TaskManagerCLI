@@ -68,4 +68,30 @@ public class TaskService {
     public Task getTask(int index) {
         return taskList.get(index);
     }
+
+    public void filterTasksByPriority(PriorityLevel priority) {
+        boolean found = false;
+        for (int i = 0; i < taskList.size(); i++) {
+            Task task = taskList.get(i);
+            if (task.getPriority() == priority) {
+                System.out.printf(" [%d] %s\n", i + 1, task);
+                found = true;
+            }
+        }
+        if (!found)
+            System.out.println(" No tasks found with priority: " + priority);
+    }
+
+    public void filterTasksByStatus(Status status) {
+        boolean found = false;
+        for (int i = 0; i < taskList.size(); i++) {
+            Task task = taskList.get(i);
+            if (task.getStatus() == status) {
+                System.out.printf(" [%d] %s\n", i + 1, task);
+                found = true;
+            }
+        }
+        if (!found)
+            System.out.println(" No tasks found with the status: " + status);
+    }
 }

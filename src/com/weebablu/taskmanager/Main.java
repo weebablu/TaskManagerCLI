@@ -31,6 +31,9 @@ public class Main {
                 case "4":
                     handleDeleteTask();
                     break;
+                case "5":
+                    handleFilterTasks();
+                    break;
                 case "0":
                     System.out.println(" :) Exiting Task Manager. \n    Stay Productive!");
                     return;
@@ -49,6 +52,7 @@ public class Main {
         System.out.println(" 2. [#] View All Tasks");
         System.out.println(" 3. [o] Mark Task as DONE");
         System.out.println(" 4. [-] Delete Task");
+        System.out.println(" 5. [~] Filter Tasks");
         System.out.println(" 0. [X] Exit");
         System.out.println(" Enter your choice: ");
     }
@@ -118,6 +122,37 @@ public class Main {
             System.out.println(" [!] Failed to delete task. Invalid input.");
             // e.printStackTrace();
 
+        }
+    }
+
+    private static void handleFilterTasks() {
+        try {
+            while (true) {
+                System.out.println(" Filter by: 1. Priority  2. Status");
+                String choice = sc.nextLine().trim();
+                switch (choice) {
+                    case "1":
+                        System.out.println(" Enter priority (LOW, MEDIUM, HIGH): ");
+                        PriorityLevel priority = PriorityLevel.valueOf(sc.nextLine().trim().toUpperCase());
+                        taskService.filterTasksByPriority(priority);
+                        break;
+                    case "2":
+                        System.out.println(" Enter status (PENDING, DONE): ");
+                        Status status = Status.valueOf(sc.nextLine().trim().toUpperCase());
+                        taskService.filterTasksByStatus(status);
+                        break;
+
+                    default:
+                        System.out.println(" [!] Invalid Filter choice.");
+                        break;
+                }
+                System.out.print("\n Do you want to filter again? (yes/no): ");
+                String again = sc.nextLine().trim().toLowerCase();
+                if (!again.equals("yes"))
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println(" [!] Filter service failed. Invalid input.\n");
         }
     }
 }
