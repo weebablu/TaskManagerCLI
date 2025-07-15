@@ -70,32 +70,42 @@ public class Main {
             System.out.println(" [:)] Task addded successfully!");
         } catch (Exception e) {
             System.out.println(" [!] Failed to add tasks. Please check your inputs.");
-            //e.printStackTrace();
+            // e.printStackTrace();
 
         }
     }
 
     private static void handleUpdateStatus() {
         try {
+            if (taskService.isTaskListEmpty()) {
+                // System.out.println(" [!] No tasks to delete.");
+                taskService.viewAllTasks();
+                return;
+            }
             taskService.viewAllTasks(); // Displaying all the tasks
             System.out.println(" Enter the task number to mark as DONE: ");
             int index = Integer.parseInt(sc.nextLine());
             taskService.updateTaskStatus(index - 1, Status.DONE);
         } catch (Exception e) {
             System.out.println(" [!] Failed to update task status. Invalid Input.");
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
     private static void handleDeleteTask() {
         try {
+            if (taskService.isTaskListEmpty()) {
+                // System.out.println(" [!] No tasks to delete.");
+                taskService.viewAllTasks();
+                return;
+            }
             taskService.viewAllTasks(); // Displaying all the tasks
             System.out.println(" Enter the task number to delete: ");
             int index = Integer.parseInt(sc.nextLine());
             taskService.deleteTask(index - 1);
         } catch (Exception e) {
             System.out.println(" [!] Failed to delete task. Invalid input.");
-           // e.printStackTrace();
+            // e.printStackTrace();
 
         }
     }

@@ -32,8 +32,12 @@ public class TaskService {
         System.out.println(" " + "=".repeat(50));
         System.out.println();
 
-        for (Task task : taskList) {
-            System.out.println(task);
+        // for (Task task : taskList) {
+        // System.out.println(task);
+        // System.out.println(" " + "-".repeat(50));
+        // }
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.printf("\n %d %s\n", i + 1, taskList.get(i));
             System.out.println(" " + "-".repeat(50));
         }
     }
@@ -55,5 +59,9 @@ public class TaskService {
         } else {
             System.out.println(" [!] Invalid task index. Deletion failed.");
         }
+    }
+
+    public boolean isTaskListEmpty() {
+        return taskList.isEmpty();
     }
 }
