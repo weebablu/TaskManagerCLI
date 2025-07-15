@@ -1,1 +1,1 @@
-"Ran the application and tested the performance. Looks ggod so far. Changes Required - further formatting, adding a confirmational pop up before deleting unfinished tasks." 
+"Ran the application and tested the performance. Looks good so far. Changes Required - further formatting, adding a confirmational pop up before deleting unfinished tasks." 
