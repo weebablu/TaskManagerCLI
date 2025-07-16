@@ -34,6 +34,9 @@ public class Main {
                 case "5":
                     handleFilterTasks();
                     break;
+                case "6":
+                    taskService.undoLastAction();
+                    break;
                 case "0":
                     System.out.println(" :) Exiting Task Manager. \n    Stay Productive!");
                     return;
@@ -53,6 +56,7 @@ public class Main {
         System.out.println(" 3. [o] Mark Task as DONE");
         System.out.println(" 4. [-] Delete Task");
         System.out.println(" 5. [~] Filter Tasks");
+        System.out.println(" 6. [<-] Undo Last Action");
         System.out.println(" 0. [X] Exit");
         System.out.println(" Enter your choice: ");
     }
