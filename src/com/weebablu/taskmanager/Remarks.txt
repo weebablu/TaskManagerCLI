@@ -1,5 +1,0 @@
-"Ran the application and tested the performance. Looks good so far.
-<br>
-Changes Made: Added the confirmational check service before deleting the unfinished tasks.
-<br>
-Changes required: furhter formatting."
