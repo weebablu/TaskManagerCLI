@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Deque;
 import java.util.ArrayDeque;
 
-public class TaskService {
+public class TaskService implements ITaskService {
     private List<Task> taskList;
     private int nextId;
     private final Deque<UndoAction> undoStack = new ArrayDeque<>();
@@ -24,6 +24,7 @@ public class TaskService {
         this.nextId = 1;
     }
 
+    @Override
     public Task addTask(String title, String description, PriorityLevel priority, LocalDateTime dueDate) {
         Task task = new Task(nextId++, title, description, dueDate, priority);
         taskList.add(task);
@@ -32,6 +33,7 @@ public class TaskService {
         return task;
     }
 
+    @Override
     public void viewAllTasks() {
         if (taskList.isEmpty()) {
             System.out.println(" \nNo tasks available. Add one to get started!" + " :)\n");
@@ -51,6 +53,7 @@ public class TaskService {
         }
     }
 
+    @Override
     public void updateTaskStatus(int taskIndex, Status newStatus) {
         if (taskIndex >= 0 && taskIndex < taskList.size()) {
             Task task = taskList.get(taskIndex);
@@ -64,6 +67,7 @@ public class TaskService {
         }
     }
 
+    @Override
     public void deleteTask(int taskIndex) {
         if (taskIndex >= 0 && taskIndex < taskList.size()) {
             Task removed = taskList.remove(taskIndex);
@@ -75,14 +79,17 @@ public class TaskService {
         }
     }
 
+    @Override
     public boolean isTaskListEmpty() {
         return taskList.isEmpty();
     }
 
+    @Override
     public Task getTask(int index) {
         return taskList.get(index);
     }
 
+    @Override
     public void filterTasksByPriority(PriorityLevel priority) {
         boolean found = false;
         for (int i = 0; i < taskList.size(); i++) {
@@ -96,6 +103,7 @@ public class TaskService {
             System.out.println(" No tasks found with priority: " + priority);
     }
 
+    @Override
     public void filterTasksByStatus(Status status) {
         boolean found = false;
         for (int i = 0; i < taskList.size(); i++) {
@@ -109,6 +117,7 @@ public class TaskService {
             System.out.println(" No tasks found with the status: " + status);
     }
 
+    @Override
     public void undoLastAction() {
         if (undoStack.isEmpty()) {
             System.out.println(" Nothing to undo.");
@@ -139,6 +148,7 @@ public class TaskService {
         }
     }
 
+    @Override
     public void redoLastAction() {
         // yet to be written.
         if (redoStack.isEmpty()) {

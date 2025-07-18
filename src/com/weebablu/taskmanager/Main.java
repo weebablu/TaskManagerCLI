@@ -4,6 +4,7 @@ import com.weebablu.taskmanager.enums.*;
 // import com.weebablu.taskmanager.utils.*;
 // import com.weebablu.taskmanager.exceptions.*;
 import com.weebablu.taskmanager.models.Task;
+import com.weebablu.taskmanager.services.ITaskService;
 import com.weebablu.taskmanager.services.TaskService;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
-    private static final TaskService taskService = new TaskService();
+    private static final ITaskService taskService = new TaskService();
 
     public static void main(String[] args) {
         while (true) {
